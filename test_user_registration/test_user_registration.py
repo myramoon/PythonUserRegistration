@@ -44,3 +44,16 @@ def test_validate_name_raises_exception_on_invalid_name(instance_of_user_registr
 def test_validate_email(input ,expected , instance_of_user_registration):
     result = instance_of_user_registration.validate_email(input)
     assert result == expected
+
+@pytest.mark.parametrize("input , expected" , [
+                ("Abgth1x!c", True),
+                ("AAHJJcwhq1$", True),
+                ("abc", False),
+                ("abcdefgh", False),
+                ("abcdefgH", False),
+                ("abcdefG1", False),
+                ("$ajwbD1" , False)
+])
+def test_validate_password(input , expected , instance_of_user_registration):
+    result = instance_of_user_registration.validate_password(input)
+    assert result == expected
