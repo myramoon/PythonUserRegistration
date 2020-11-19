@@ -8,13 +8,25 @@ def instance_of_user_registration():
     user_registration = UserRegistration()
     return user_registration
 
+
 def test_validate_name(instance_of_user_registration):
     result = instance_of_user_registration.validate_name("Anam")
     assert result == "Anam"
 
+
 def test_validate_name_raises_exception_on_invalid_name(instance_of_user_registration):
     with pytest.raises(InvalidInput):
         instance_of_user_registration.validate_name("A3jhsfd")
+
+
+def test_validate_phone_number(instance_of_user_registration):
+    result = instance_of_user_registration.validate_phone_number("91 8927142222")
+    assert result == "91 8927142222"
+
+
+def test_validate_phone_number_raises_exception_on_invalid_name(instance_of_user_registration):
+    with pytest.raises(InvalidInput):
+        instance_of_user_registration.validate_phone_number("91 09142222")
 
 
 @pytest.mark.parametrize("input , expected" , [
@@ -44,6 +56,7 @@ def test_validate_name_raises_exception_on_invalid_name(instance_of_user_registr
 def test_validate_email(input ,expected , instance_of_user_registration):
     result = instance_of_user_registration.validate_email(input)
     assert result == expected
+
 
 @pytest.mark.parametrize("input , expected" , [
                 ("Abgth1x!c", True),
