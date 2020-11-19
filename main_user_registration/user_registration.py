@@ -15,3 +15,9 @@ class UserRegistration():
         match = pattern.search(email)
         if not match: return False
         else: return True
+
+    def validate_password(self , password):
+        pattern = re.compile(r'^(?=.*[A-Z](?=.*\d))(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
+        match = pattern.search(password)
+        if not match: return False
+        else: return True
