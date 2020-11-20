@@ -1,2 +1,6 @@
 class InvalidInput(Exception):
-    pass
+    def __init__(self, message):
+        """
+        :param message:
+        """
+        super().__init__(message)
